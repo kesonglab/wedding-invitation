@@ -7,12 +7,14 @@
 ## 使用
 
 1. Fork 或克隆本仓库
-2. 图片说明：
-   - `couple.png` 婚纱照抠图（透明底 + 白边贴纸效果，压在大囍字前面）
-   - `boy.jpg` / `girl.jpg` 宝宝头像贴纸，用在邀请信息区的头像（`bride.jpg`/`groom.jpg` 存在时优先用它们）
+2. 所有图片都在 `images/` 目录，想换成自己的：
+   - `couple.webp` / `couple.png` 婚纱照抠图（透明底，压在囍字前面；webp 优先，png 兜底）
+   - `baby-boy.png` / `baby-girl.jpg` 宝宝时期贴纸头像
+   - `welcome.png` / `to-our-wedding.png` / `invitation.png` / `xi.png` 手绘字与囍
+   - 其余 `firework-*` / `tulips` / `flower` / `butterfly` / `heart-*` / `dots` / `gold-stroke` 是装饰小元素
 3. 改文字：打开 `index.html`，搜索替换姓名、时间、地址
-4. 改倒计时：搜索 `weddingTime`，改成你的婚期
-5. 换婚纱照：用自己的照片重抠一张透明底 PNG 替换 `couple.png` 即可（任意抠图工具都行）
+4. 改倒计时：打开 `main.js`，搜索 `weddingTime`，改成你的婚期
+5. 换婚纱照：把自己的照片重抠一张透明底 PNG，压成 `couple.webp`，放进 `images/` 替换即可
 
 ## 部署到 GitHub Pages
 
