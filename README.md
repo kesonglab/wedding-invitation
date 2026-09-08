@@ -7,13 +7,12 @@
 ## 使用
 
 1. Fork 或克隆本仓库
-2. 把 4 张照片放进根目录（和 `index.html` 同级）：
-   - `girl.jpg` 新娘童年照
-   - `boy.jpg` 新郎童年照
-   - `bride.jpg` 新娘头像（没有就自动用 girl.jpg）
-   - `groom.jpg` 新郎头像（没有就自动用 boy.jpg）
+2. 图片说明：
+   - `couple.png` 婚纱照抠图（透明底 + 白边贴纸效果，压在大囍字前面）
+   - `boy.jpg` / `girl.jpg` 宝宝头像贴纸，用在邀请信息区的头像（`bride.jpg`/`groom.jpg` 存在时优先用它们）
 3. 改文字：打开 `index.html`，搜索替换姓名、时间、地址
 4. 改倒计时：搜索 `weddingTime`，改成你的婚期
+5. 换婚纱照：用自己的照片重抠一张透明底 PNG 替换 `couple.png` 即可（任意抠图工具都行）
 
 ## 部署到 GitHub Pages
 

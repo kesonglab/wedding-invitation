@@ -7,7 +7,7 @@
 <meta name="description" content="我们结婚啦！诚邀您见证我们的幸福时刻。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:BNCE,INFM,wght@0..100,0..100,300..800&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
 <style>
   :root {
     --red: #c43a3a;
@@ -70,42 +70,43 @@
     width: min(420px, 78vw);
     height: auto;
   }
+  /* 手写马克笔风格：Shantell Sans 跳动基线 + 不规则字形 */
+  .hand {
+    font-family: 'Shantell Sans', 'Comic Sans MS', cursive;
+    font-variation-settings: 'BNCE' 55, 'INFM' 85;
+    font-weight: 700;
+  }
   .hero .to-our {
-    font-family: 'Caveat', cursive;
     font-size: clamp(20px, 3.5vw, 28px);
-    font-weight: 600;
     color: var(--red);
     letter-spacing: 3px;
     margin-top: -18px;
   }
+  .xi-stage {
+    position: relative;
+    margin: -6px 0;
+    line-height: 1;
+  }
   .xi {
+    display: flex;
     font-size: clamp(140px, 30vw, 300px);
-    font-weight: 900;
     color: var(--red);
     line-height: 1;
-    font-family: "SimHei", "Microsoft YaHei", sans-serif;
+    font-family: 'ZCOOL KuaiLe', 'Ma Shan Zheng', sans-serif;
     text-shadow: 2px 2px 0 rgba(180,40,40,0.15);
-    margin: -10px 0;
   }
-  .hero-photos {
-    display: flex;
-    gap: clamp(16px, 4vw, 48px);
-    margin-top: 28px;
+  .xi span:last-child { transform: scaleX(-1); }
+  .couple {
+    position: absolute;
+    bottom: -2%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 118%;
+    z-index: 2;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
   }
-  .photo {
-    width: clamp(130px, 24vw, 190px);
-    height: clamp(130px, 24vw, 190px);
-    border: 7px solid #fff;
-    box-shadow: 3px 5px 14px rgba(0,0,0,0.22);
-    object-fit: cover;
-    background: #ddd;
-    transition: transform 0.3s ease;
-  }
-  .photo:hover { transform: rotate(0) scale(1.05) !important; }
-  .photo-girl { transform: rotate(-5deg); }
-  .photo-boy { transform: rotate(4deg); }
   .hero .cover-bottom {
-    margin-top: 40px;
+    margin-top: 48px;
     font-size: clamp(18px, 3vw, 25px);
     color: var(--red);
     letter-spacing: 1px;
@@ -156,9 +157,7 @@
     backdrop-filter: blur(4px);
   }
   .count-num {
-    font-family: 'Caveat', cursive;
     font-size: clamp(28px, 5vw, 42px);
-    font-weight: 700;
     color: var(--red);
     line-height: 1;
   }
@@ -167,9 +166,7 @@
   /* ===== 信息区 ===== */
   .info { gap: 0; }
   .invitation-title {
-    font-family: 'Caveat', cursive;
     font-size: clamp(44px, 8vw, 64px);
-    font-weight: 700;
     color: var(--red);
     letter-spacing: 2px;
   }
@@ -319,26 +316,24 @@
 
     <svg class="welcome-wrap reveal" viewBox="0 0 420 130">
       <path id="welcomeCurve" d="M 30,110 Q 210,-10 390,110" fill="none"/>
-      <text font-family="Caveat, cursive" font-size="62" font-weight="700" fill="#c43a3a">
+      <text font-family="Shantell Sans, cursive" font-weight="700" font-size="58" fill="#c43a3a" style="font-variation-settings:'BNCE' 55,'INFM' 85">
         <textPath href="#welcomeCurve" startOffset="50%" text-anchor="middle">welcome</textPath>
       </text>
     </svg>
-    <div class="to-our reveal reveal-delay-1">to our wedding</div>
+    <div class="to-our hand reveal reveal-delay-1">to our wedding</div>
 
-    <div class="xi reveal reveal-delay-1">囍</div>
-
-    <div class="hero-photos">
-      <img class="photo photo-girl reveal reveal-delay-2" src="girl.jpg" alt="新娘童年照">
-      <img class="photo photo-boy reveal reveal-delay-2" src="boy.jpg" alt="新郎童年照">
+    <div class="xi-stage reveal reveal-delay-1">
+      <div class="xi"><span>喜</span><span>喜</span></div>
+      <img class="couple" src="couple.png" alt="我们的婚纱照">
     </div>
 
     <div class="cover-bottom reveal reveal-delay-3">欢迎参加我们的婚礼~</div>
 
     <div class="countdown reveal reveal-delay-3" id="countdown">
-      <div class="count-box"><div class="count-num" id="cd-day">--</div><div class="count-label">天</div></div>
-      <div class="count-box"><div class="count-num" id="cd-hour">--</div><div class="count-label">时</div></div>
-      <div class="count-box"><div class="count-num" id="cd-min">--</div><div class="count-label">分</div></div>
-      <div class="count-box"><div class="count-num" id="cd-sec">--</div><div class="count-label">秒</div></div>
+      <div class="count-box"><div class="count-num hand" id="cd-day">--</div><div class="count-label">天</div></div>
+      <div class="count-box"><div class="count-num hand" id="cd-hour">--</div><div class="count-label">时</div></div>
+      <div class="count-box"><div class="count-num hand" id="cd-min">--</div><div class="count-label">分</div></div>
+      <div class="count-box"><div class="count-num hand" id="cd-sec">--</div><div class="count-label">秒</div></div>
     </div>
 
     <div class="scroll-hint"><span>往下看</span><span class="arrow"></span></div>
@@ -346,7 +341,7 @@
 
   <!-- ==================== 邀请信息 ==================== -->
   <section class="info">
-    <div class="invitation-title reveal">Invitation</div>
+    <div class="invitation-title hand reveal">Invitation</div>
 
     <div class="avatars reveal reveal-delay-1">
       <div class="avatar-circle avatar-groom"><img src="groom.jpg" alt="新郎头像" onerror="this.src='boy.jpg'"></div>
