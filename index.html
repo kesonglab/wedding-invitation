@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王巍昱 ❤ 朱紫荆 · 婚礼请柬</title>
+<meta name="description" content="我们结婚啦！诚邀您见证我们的幸福时刻。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=ZCOOL+KuaiLe&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #c43a3a;
+    --red-deep: #b83030;
+    --paper: #f2e8d0;
+    --paper-dark: #e0d8c8;
+    --ink: #8a7a60;
+    --gold: #f0c040;
+    --green: #7bc87b;
+    --blue: #5bc0de;
+    --pink: #f0a0c0;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper-dark);
+    font-family: 'ZCOOL KuaiLe', 'Ma Shan Zheng', cursive;
+    color: var(--red-deep);
+    overflow-x: hidden;
+  }
+
+  /* 纸张纹理，铺满全页 */
+  .paper-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 25% 20%, rgba(210,180,130,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 75% 80%, rgba(190,160,110,0.14) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(245,235,210,0.5) 0%, transparent 70%),
+      var(--paper);
+  }
+  .paper-noise { position: absolute; inset: 0; opacity: 0.3; }
+  main { position: relative; z-index: 1; }
+
+  section {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    position: relative;
+  }
+
+  /* ===== 滚动进场动画 ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(36px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+  .reveal-delay-3 { transition-delay: 0.45s; }
+
+  /* ===== 封面 Hero ===== */
+  .hero .welcome-wrap {
+    width: min(420px, 78vw);
+    height: auto;
+  }
+  .hero .to-our {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(20px, 3.5vw, 28px);
+    font-weight: 600;
+    color: var(--red);
+    letter-spacing: 3px;
+    margin-top: -18px;
+  }
+  .xi {
+    font-size: clamp(140px, 30vw, 300px);
+    font-weight: 900;
+    color: var(--red);
+    line-height: 1;
+    font-family: "SimHei", "Microsoft YaHei", sans-serif;
+    text-shadow: 2px 2px 0 rgba(180,40,40,0.15);
+    margin: -10px 0;
+  }
+  .hero-photos {
+    display: flex;
+    gap: clamp(16px, 4vw, 48px);
+    margin-top: 28px;
+  }
+  .photo {
+    width: clamp(130px, 24vw, 190px);
+    height: clamp(130px, 24vw, 190px);
+    border: 7px solid #fff;
+    box-shadow: 3px 5px 14px rgba(0,0,0,0.22);
+    object-fit: cover;
+    background: #ddd;
+    transition: transform 0.3s ease;
+  }
+  .photo:hover { transform: rotate(0) scale(1.05) !important; }
+  .photo-girl { transform: rotate(-5deg); }
+  .photo-boy { transform: rotate(4deg); }
+  .hero .cover-bottom {
+    margin-top: 40px;
+    font-size: clamp(18px, 3vw, 25px);
+    color: var(--red);
+    letter-spacing: 1px;
+    text-align: center;
+  }
+
+  /* 滚动提示 */
+  .scroll-hint {
+    position: absolute;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--ink);
+    font-family: sans-serif;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.8;
+  }
+  .scroll-hint .arrow {
+    width: 18px;
+    height: 18px;
+    border-left: 2px solid var(--ink);
+    border-bottom: 2px solid var(--ink);
+    transform: rotate(-45deg);
+    animation: bounce 1.6s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: rotate(-45deg) translate(0, 0); }
+    50% { transform: rotate(-45deg) translate(-4px, 4px); }
+  }
+
+  /* ===== 倒计时 ===== */
+  .countdown {
+    display: flex;
+    gap: clamp(10px, 3vw, 22px);
+    margin-top: 22px;
+  }
+  .count-box {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(196,58,58,0.25);
+    border-radius: 12px;
+    padding: 10px 0;
+    width: clamp(64px, 12vw, 88px);
+    text-align: center;
+    backdrop-filter: blur(4px);
+  }
+  .count-num {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 700;
+    color: var(--red);
+    line-height: 1;
+  }
+  .count-label { font-size: 13px; color: var(--ink); margin-top: 4px; }
+
+  /* ===== 信息区 ===== */
+  .info { gap: 0; }
+  .invitation-title {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(44px, 8vw, 64px);
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 2px;
+  }
+  .avatars {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 3vw, 22px);
+    margin-top: 30px;
+  }
+  .avatar-circle {
+    width: clamp(90px, 16vw, 118px);
+    height: clamp(90px, 16vw, 118px);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+  }
+  .avatar-groom { background: #e8a020; }
+  .avatar-bride { background: #f2a0a8; }
+  .avatar-circle img { width: 100%; height: 100%; object-fit: cover; }
+  .heart-between { font-size: clamp(22px, 4vw, 30px); color: var(--red); }
+
+  .names {
+    display: flex;
+    gap: clamp(28px, 8vw, 80px);
+    font-size: clamp(17px, 3vw, 21px);
+    margin-top: 18px;
+    white-space: nowrap;
+  }
+
+  .invite-text { text-align: center; margin-top: 26px; }
+  .invite-text .line1 { font-size: clamp(15px, 2.6vw, 18px); letter-spacing: 2px; margin-bottom: 8px; }
+  .invite-text .line2 { font-size: clamp(17px, 3vw, 20px); margin-bottom: 8px; }
+  .invite-text .line3, .invite-text .line4 { font-size: clamp(14px, 2.4vw, 16px); margin-bottom: 5px; }
+
+  .tag {
+    display: inline-block;
+    background: var(--gold);
+    color: #8a5a10;
+    font-size: clamp(15px, 2.4vw, 17px);
+    padding: 5px 24px;
+    border-radius: 20px;
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.1);
+  }
+  .detail-card {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(196,58,58,0.2);
+    border-radius: 16px;
+    padding: 26px clamp(20px, 5vw, 44px);
+    text-align: center;
+    backdrop-filter: blur(4px);
+    margin-top: 14px;
+  }
+  .detail-card p {
+    margin-top: 12px;
+    font-size: clamp(15px, 2.6vw, 17px);
+    line-height: 1.9;
+  }
+  .info-blocks { margin-top: 26px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+  /* 装饰定位：贴着各 section 撒 */
+  .dot { position: absolute; border-radius: 50%; pointer-events: none; }
+  .heart { position: absolute; pointer-events: none; font-size: 22px; animation: float 4s ease-in-out infinite; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .firework { position: absolute; pointer-events: none; width: clamp(70px, 12vw, 110px); height: auto; }
+  .fw-left { top: 14%; left: 4%; animation: spin 24s linear infinite; }
+  .fw-right { top: 16%; right: 4%; transform: scaleX(-1); animation: spin 30s linear infinite reverse; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .fw-right { animation: spin-rev 30s linear infinite; }
+  @keyframes spin-rev { from { transform: scaleX(-1) rotate(0); } to { transform: scaleX(-1) rotate(360deg); } }
+  .deco { position: absolute; pointer-events: none; }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 30px 20px 40px;
+    color: var(--ink);
+    font-family: sans-serif;
+    font-size: 12px;
+  }
+  footer a { color: var(--ink); }
+
+  @media (max-width: 480px) {
+    section { padding: 60px 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { transition: none; opacity: 1; transform: none; }
+    .heart, .fw-left, .fw-right, .scroll-hint .arrow { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="paper-bg">
+  <svg class="paper-noise" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+    <filter id="noise1">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#noise1)"/>
+  </svg>
+</div>
+
+<main>
+
+  <!-- ==================== 封面 ==================== -->
+  <section class="hero">
+    <svg class="firework fw-left" viewBox="0 0 110 110" aria-hidden="true">
+      <g transform="translate(55,55)">
+        <line x1="0" y1="0" x2="0" y2="-40" stroke="#5bc0de" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="28" y2="-28" stroke="#f0a0c0" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="40" y2="0" stroke="#7bc87b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="28" y2="28" stroke="#f0c040" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="-28" y2="-28" stroke="#f0a0c0" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="-40" y2="0" stroke="#5bc0de" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="-20" y2="35" stroke="#7bc87b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="20" y2="35" stroke="#f0c040" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="0" cy="-40" r="4" fill="#5bc0de"/><circle cx="28" cy="-28" r="4" fill="#f0a0c0"/>
+        <circle cx="40" cy="0" r="4" fill="#7bc87b"/><circle cx="28" cy="28" r="4" fill="#f0c040"/>
+        <circle cx="-28" cy="-28" r="4" fill="#f0a0c0"/><circle cx="-40" cy="0" r="4" fill="#5bc0de"/>
+        <circle cx="-20" cy="35" r="4" fill="#7bc87b"/><circle cx="20" cy="35" r="4" fill="#f0c040"/>
+      </g>
+    </svg>
+    <svg class="firework fw-right" viewBox="0 0 110 110" aria-hidden="true">
+      <g transform="translate(55,55)">
+        <line x1="0" y1="0" x2="0" y2="-38" stroke="#f0a0c0" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="26" y2="-26" stroke="#5bc0de" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="38" y2="0" stroke="#f0c040" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="26" y2="26" stroke="#7bc87b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="-26" y2="-26" stroke="#7bc87b" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="-38" y2="0" stroke="#f0a0c0" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="-18" y2="33" stroke="#5bc0de" stroke-width="3" stroke-linecap="round"/>
+        <line x1="0" y1="0" x2="18" y2="33" stroke="#f0c040" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="0" cy="-38" r="4" fill="#f0a0c0"/><circle cx="26" cy="-26" r="4" fill="#5bc0de"/>
+        <circle cx="38" cy="0" r="4" fill="#f0c040"/><circle cx="26" cy="26" r="4" fill="#7bc87b"/>
+        <circle cx="-26" cy="-26" r="4" fill="#7bc87b"/><circle cx="-38" cy="0" r="4" fill="#f0a0c0"/>
+        <circle cx="-18" cy="33" r="4" fill="#5bc0de"/><circle cx="18" cy="33" r="4" fill="#f0c040"/>
+      </g>
+    </svg>
+
+    <svg class="welcome-wrap reveal" viewBox="0 0 420 130">
+      <path id="welcomeCurve" d="M 30,110 Q 210,-10 390,110" fill="none"/>
+      <text font-family="Caveat, cursive" font-size="62" font-weight="700" fill="#c43a3a">
+        <textPath href="#welcomeCurve" startOffset="50%" text-anchor="middle">welcome</textPath>
+      </text>
+    </svg>
+    <div class="to-our reveal reveal-delay-1">to our wedding</div>
+
+    <div class="xi reveal reveal-delay-1">囍</div>
+
+    <div class="hero-photos">
+      <img class="photo photo-girl reveal reveal-delay-2" src="girl.jpg" alt="新娘童年照">
+      <img class="photo photo-boy reveal reveal-delay-2" src="boy.jpg" alt="新郎童年照">
+    </div>
+
+    <div class="cover-bottom reveal reveal-delay-3">欢迎参加我们的婚礼~</div>
+
+    <div class="countdown reveal reveal-delay-3" id="countdown">
+      <div class="count-box"><div class="count-num" id="cd-day">--</div><div class="count-label">天</div></div>
+      <div class="count-box"><div class="count-num" id="cd-hour">--</div><div class="count-label">时</div></div>
+      <div class="count-box"><div class="count-num" id="cd-min">--</div><div class="count-label">分</div></div>
+      <div class="count-box"><div class="count-num" id="cd-sec">--</div><div class="count-label">秒</div></div>
+    </div>
+
+    <div class="scroll-hint"><span>往下看</span><span class="arrow"></span></div>
+  </section>
+
+  <!-- ==================== 邀请信息 ==================== -->
+  <section class="info">
+    <div class="invitation-title reveal">Invitation</div>
+
+    <div class="avatars reveal reveal-delay-1">
+      <div class="avatar-circle avatar-groom"><img src="groom.jpg" alt="新郎头像" onerror="this.src='boy.jpg'"></div>
+      <span class="heart-between">❤️</span>
+      <div class="avatar-circle avatar-bride"><img src="bride.jpg" alt="新娘头像" onerror="this.src='girl.jpg'"></div>
+    </div>
+
+    <div class="names reveal reveal-delay-1">
+      <span>新郎:王巍昱</span>
+      <span>新娘:朱紫荆</span>
+    </div>
+
+    <div class="invite-text reveal reveal-delay-2">
+      <div class="line1">钟于·忠于·衷于·终于</div>
+      <div class="line2">我们结婚啦~</div>
+      <div class="line3">是官方宣告也是真挚邀请</div>
+      <div class="line4">诚邀您携家人见证我们的幸福时刻</div>
+    </div>
+
+    <div class="info-blocks reveal reveal-delay-3">
+      <span class="tag">婚礼时间</span>
+      <div class="detail-card">
+        <p>2026年09月28日 11时30分<br>农历:八月十八(星期一)</p>
+      </div>
+      <span class="tag" style="margin-top:14px;">婚礼地址</span>
+      <div class="detail-card">
+        <p>不夜弦城-海纳百川礼宴中心<br>河南省信阳市光山县紫水街道弦山南路120号</p>
+      </div>
+    </div>
+
+    <!-- 装饰 -->
+    <svg class="deco" style="top:12%;left:6%;width:40px;height:40px;" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="12" r="7" fill="#f0a0c0"/><circle cx="12" cy="20" r="7" fill="#f0a0c0"/>
+      <circle cx="28" cy="20" r="7" fill="#f0a0c0"/><circle cx="20" cy="28" r="7" fill="#f0a0c0"/>
+      <circle cx="20" cy="20" r="5" fill="#f0c040"/>
+    </svg>
+    <svg class="deco" style="top:14%;right:6%;width:44px;height:36px;" viewBox="0 0 44 36" aria-hidden="true">
+      <ellipse cx="13" cy="16" rx="11" ry="13" fill="#7bc8e8" opacity="0.85"/>
+      <ellipse cx="31" cy="16" rx="11" ry="13" fill="#f0a0c0" opacity="0.85"/>
+      <ellipse cx="16" cy="25" rx="7" ry="8" fill="#5bc0de" opacity="0.7"/>
+      <ellipse cx="28" cy="25" rx="7" ry="8" fill="#e88aa0" opacity="0.7"/>
+      <rect x="20.5" y="8" width="3" height="20" rx="1.5" fill="#666"/>
+    </svg>
+    <svg class="deco" style="bottom:12%;right:8%;width:40px;height:34px;" viewBox="0 0 44 36" aria-hidden="true">
+      <ellipse cx="13" cy="16" rx="11" ry="13" fill="#7bc8e8" opacity="0.85"/>
+      <ellipse cx="31" cy="16" rx="11" ry="13" fill="#f0a0c0" opacity="0.85"/>
+      <ellipse cx="16" cy="25" rx="7" ry="8" fill="#5bc0de" opacity="0.7"/>
+      <ellipse cx="28" cy="25" rx="7" ry="8" fill="#e88aa0" opacity="0.7"/>
+      <rect x="20.5" y="8" width="3" height="20" rx="1.5" fill="#666"/>
+    </svg>
+    <svg class="deco" style="bottom:10%;left:7%;width:38px;height:38px;" viewBox="0 0 40 40" aria-hidden="true">
+      <circle cx="20" cy="12" r="7" fill="#7bc87b"/><circle cx="12" cy="20" r="7" fill="#7bc87b"/>
+      <circle cx="28" cy="20" r="7" fill="#7bc87b"/><circle cx="20" cy="28" r="7" fill="#7bc87b"/>
+      <circle cx="20" cy="20" r="5" fill="#f0c040"/>
+    </svg>
+    <div class="dot" style="width:14px;height:14px;background:#7bc87b;top:22%;left:10%;"></div>
+    <div class="dot" style="width:10px;height:10px;background:#f0c040;top:34%;left:6%;"></div>
+    <div class="dot" style="width:12px;height:12px;background:#5bc0de;bottom:24%;right:10%;"></div>
+    <div class="dot" style="width:8px;height:8px;background:#f0a0c0;top:28%;right:14%;"></div>
+    <div class="heart" style="top:18%;left:16%;font-size:18px;">❤️</div>
+    <div class="heart" style="bottom:20%;right:18%;font-size:16px;">❤️</div>
+  </section>
+
+</main>
+
+<footer>
+  Wedding Invitation · 开源模板 · MIT License
+</footer>
+
+<script>
+  // 滚动进场
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // 倒计时，改这里的时间即可
+  const weddingTime = new Date('2026-09-28T11:30:00+08:00').getTime();
+  const pad = n => String(n).padStart(2, '0');
+  function tick() {
+    const diff = weddingTime - Date.now();
+    if (diff <= 0) {
+      document.getElementById('countdown').innerHTML =
+        '<div class="count-box"><div class="count-num">🎉</div><div class="count-label">今天大喜！</div></div>';
+      return;
+    }
+    document.getElementById('cd-day').textContent = Math.floor(diff / 86400000);
+    document.getElementById('cd-hour').textContent = pad(Math.floor(diff / 3600000) % 24);
+    document.getElementById('cd-min').textContent = pad(Math.floor(diff / 60000) % 60);
+    document.getElementById('cd-sec').textContent = pad(Math.floor(diff / 1000) % 60);
+    setTimeout(tick, 1000);
+  }
+  tick();
+</script>
+
+</body>
+</html>
