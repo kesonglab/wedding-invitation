@@ -1,31 +1,13 @@
 /* 自托管字体 */
 @font-face {
-  font-family: 'Zhi Mang Xing';
-  src: url('fonts/ZhiMangXing-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
   font-family: 'ZCOOL Xiao Wei';
   src: url('fonts/ZCOOLXiaoWei-subset.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
-  font-family: 'LXGW Neo XiHei';
-  src: url('fonts/LXGWNeoXiHei-subset.woff2') format('woff2');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
   font-family: 'Pinyon Script';
   src: url('fonts/PinyonScript-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Great Vibes';
-  src: url('fonts/GreatVibes-Regular.ttf') format('truetype');
   font-weight: 400;
   font-display: swap;
 }
