@@ -32,6 +32,10 @@ html {
   overflow-x: hidden;
 }
 
+:root {
+  color-scheme: light dark;
+}
+
 body {
   background-color: #E3DACE;
   background-image: radial-gradient(ellipse at 50% 45%, #F3EEE4 0%, #E3DACE 55%, #D4C9BA 100%);
@@ -472,6 +476,73 @@ body {
     padding-bottom: max(0px, constant(safe-area-inset-bottom), env(safe-area-inset-bottom));
     padding-left: max(1rem, constant(safe-area-inset-left), env(safe-area-inset-left));
     padding-right: max(1rem, constant(safe-area-inset-right), env(safe-area-inset-right));
+  }
+}
+
+/* 深色模式 — 保持暖调中式质感，深色底 + 浅暖字 + 红 accent */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1A1614;
+    background-image: radial-gradient(ellipse at 50% 45%, #2A2420 0%, #1A1614 55%, #0F0D0C 100%);
+    color: #D8CFC4;
+  }
+
+  .invitation {
+    background-color: #26211D;
+    background-image: linear-gradient(180deg, #2C2622 0%, #26211D 12%, #26211D 88%, #1E1A17 100%);
+    box-shadow: 0 0 0 1px rgba(214, 138, 138, 0.08),
+                0 22px 60px -18px rgba(0, 0, 0, 0.45),
+                0 8px 24px -6px rgba(0, 0, 0, 0.35);
+  }
+
+  @media (max-width: 480px) {
+    .invitation {
+      box-shadow: 0 0 0 1px rgba(214, 138, 138, 0.08),
+                  0 14px 38px -12px rgba(0, 0, 0, 0.42),
+                  0 5px 16px -4px rgba(0, 0, 0, 0.32);
+    }
+  }
+
+  @media (hover: hover) {
+    .invitation:hover {
+      box-shadow: 0 0 0 1px rgba(214, 138, 138, 0.1),
+                  0 28px 76px -20px rgba(0, 0, 0, 0.5),
+                  0 10px 32px -8px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .page-title {
+    color: #D68A8A;
+  }
+
+  .hi,
+  .opening-lines p:nth-child(3),
+  .opening-lines p:nth-child(4),
+  .opening-lines p:nth-child(5),
+  .address-title,
+  .date-main .day {
+    color: #D68A8A;
+  }
+
+  .opening-lines p,
+  .date-main,
+  .date-sub,
+  .street {
+    color: #BFB3A6;
+  }
+
+  .names,
+  .venue {
+    color: #E8E0D6;
+  }
+
+  .copyright {
+    color: #8A7F73;
+  }
+
+  .copyright a:hover {
+    color: #D68A8A;
+    border-bottom-color: #D68A8A;
   }
 }
 
