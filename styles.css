@@ -245,8 +245,9 @@ body {
   width: min(92%, 640px);
   margin-top: clamp(1rem, 4.5vw, 1.8rem);
   display: flex;
-  align-items: flex-start;
-  gap: clamp(0.75rem, 3vw, 1.5rem);
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.35rem, 1.4vw, 0.75rem);
   opacity: 0;
   -webkit-animation: rise 0.75s ease-out 0.22s forwards;
   animation: rise 0.75s ease-out 0.22s forwards;
@@ -255,8 +256,8 @@ body {
 .hi {
   flex-shrink: 0;
   font-family: 'Pinyon Script', cursive;
-  font-size: clamp(2.4rem, 9vw, 4.5rem);
-  line-height: 0.9;
+  font-size: clamp(1.8rem, 6.5vw, 3.2rem);
+  line-height: 1;
   color: #8B2500;
   -webkit-transform: rotate(-6deg);
   transform: rotate(-6deg);
@@ -266,25 +267,48 @@ body {
 }
 
 .opening-lines {
-  flex: 1;
-  padding-top: clamp(0.25rem, 1.2vw, 0.6rem);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  -webkit-writing-mode: vertical-rl;
+  -ms-writing-mode: tb-rl;
+  writing-mode: vertical-rl;
+  gap: clamp(0.85rem, 3vw, 1.5rem);
 }
 
 .opening-lines p {
   font-family: 'KingHwa OldSong', 'ZCOOL Xiao Wei', 'Songti SC', serif;
-  font-size: clamp(1.05rem, 3.6vw, 1.35rem);
+  font-size: clamp(0.95rem, 3.4vw, 1.25rem);
   font-weight: 400;
-  line-height: 1.7;
+  line-height: 1.85;
   color: #555;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
+  -webkit-text-orientation: mixed;
+  text-orientation: mixed;
+  white-space: nowrap;
 }
 
 .opening-lines p:nth-child(3),
 .opening-lines p:nth-child(4),
 .opening-lines p:nth-child(5) {
   color: #8B2500;
-  font-size: clamp(1.05rem, 4vw, 1.45rem);
-  letter-spacing: 0.06em;
+  font-size: clamp(1.05rem, 3.8vw, 1.35rem);
+  letter-spacing: 0.08em;
+}
+
+/* 小屏上诗句高度控制：略收紧字距，保证整体不臃肿 */
+@media (max-width: 480px) {
+  .opening-lines p {
+    line-height: 1.75;
+  }
+
+  .opening-lines p:nth-child(3),
+  .opening-lines p:nth-child(4),
+  .opening-lines p:nth-child(5) {
+    line-height: 1.8;
+  }
 }
 
 /* 主视觉图 */
@@ -311,12 +335,12 @@ body {
   gap: 0.75em;
   font-family: 'KingHwa OldSong', 'ZCOOL Xiao Wei', 'Songti SC', serif;
   font-weight: 400;
-  font-size: clamp(1.3rem, 4.2vw, 1.95rem);
-  color: #444;
-  letter-spacing: 0.2em;
-  text-indent: 0.2em;
+  font-size: clamp(1.6rem, 6vw, 2.6rem);
+  color: #7B1818;
+  letter-spacing: 0.28em;
+  text-indent: 0.28em;
   white-space: nowrap;
-  text-shadow: none;
+  text-shadow: 0 1px 0 rgba(123, 24, 24, 0.08);
   opacity: 0;
   -webkit-animation: rise 0.75s ease-out 0.44s forwards;
   animation: rise 0.75s ease-out 0.44s forwards;
@@ -348,9 +372,9 @@ body {
   align-items: baseline;
   max-width: 100%;
   font-family: 'KingHwa OldSong', 'ZCOOL Xiao Wei', 'Songti SC', serif;
-  font-size: clamp(1.15rem, 4vw, 1.5rem);
-  color: #555;
-  letter-spacing: 0.06em;
+  font-size: clamp(1.25rem, 4.4vw, 1.75rem);
+  color: #444;
+  letter-spacing: 0.08em;
   opacity: 0;
   -webkit-animation: rise 0.75s ease-out 0.58s forwards;
   animation: rise 0.75s ease-out 0.58s forwards;
@@ -359,7 +383,8 @@ body {
 .date-main .year,
 .date-main .weekday {
   font-weight: 400;
-  font-size: 0.85em;
+  font-size: 0.78em;
+  color: #555;
 }
 
 .date-main .sep {
@@ -369,19 +394,19 @@ body {
 .date-main .day {
   color: #7B1818;
   font-weight: 400;
-  font-size: 1.75em;
-  margin: 0 0.1em;
-  text-shadow: none;
+  font-size: 1.9em;
+  margin: 0 0.12em;
+  text-shadow: 0 1px 0 rgba(123, 24, 24, 0.08);
 }
 
 .date-sub {
   width: min(92%, 600px);
-  margin: clamp(0.4rem, 1.6vw, 0.75rem) auto 0;
+  margin: clamp(0.45rem, 1.8vw, 0.85rem) auto 0;
   font-family: 'KingHwa OldSong', 'ZCOOL Xiao Wei', 'Songti SC', serif;
-  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+  font-size: clamp(1rem, 3.4vw, 1.25rem);
   font-weight: 400;
-  color: #555;
-  letter-spacing: 0.1em;
+  color: #7B1818;
+  letter-spacing: 0.14em;
   text-align: center;
   line-height: 1.5;
   opacity: 0;
@@ -532,6 +557,15 @@ body {
   .names,
   .venue {
     color: #E8E0D6;
+  }
+
+  .date-sub {
+    color: #D68A8A;
+  }
+
+  .date-main .year,
+  .date-main .weekday {
+    color: #BFB3A6;
   }
 
   .copyright {
