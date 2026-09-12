@@ -105,49 +105,37 @@ body {
   }
 }
 
-@-webkit-keyframes float {
-  0%, 100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  50% {
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0);
-  }
-  50% {
-    -webkit-transform: translateY(-5px);
-    transform: translateY(-5px);
-  }
-}
-
-/* 爱心心跳 — 轻柔律动，不抢戏 */
+/* 爱心心跳 — 怦然心动：强拍、弱拍、停顿 */
 @-webkit-keyframes heartbeat {
   0%, 100% {
     -webkit-transform: scale(1);
     transform: scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  8% {
-    -webkit-transform: scale(1.06);
-    transform: scale(1.06);
+  5% {
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 1);
   }
-  16% {
+  10% {
     -webkit-transform: scale(1);
     transform: scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  24% {
-    -webkit-transform: scale(1.04);
-    transform: scale(1.04);
+  15% {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 1);
   }
-  32% {
+  20% {
     -webkit-transform: scale(1);
     transform: scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
@@ -155,22 +143,32 @@ body {
   0%, 100% {
     -webkit-transform: scale(1);
     transform: scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  8% {
-    -webkit-transform: scale(1.06);
-    transform: scale(1.06);
+  5% {
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 1);
   }
-  16% {
+  10% {
     -webkit-transform: scale(1);
     transform: scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  24% {
-    -webkit-transform: scale(1.04);
-    transform: scale(1.04);
+  15% {
+    -webkit-transform: scale(1.08);
+    transform: scale(1.08);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0, 1, 1);
+    animation-timing-function: cubic-bezier(0.55, 0, 1, 1);
   }
-  32% {
+  20% {
     -webkit-transform: scale(1);
     transform: scale(1);
+    -webkit-animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
 
@@ -337,8 +335,8 @@ body {
   opacity: 0;
   -webkit-transform-origin: center;
   transform-origin: center;
-  -webkit-animation: rise 0.75s ease-out 0.52s forwards, heartbeat 2s ease-in-out 1.2s infinite;
-  animation: rise 0.75s ease-out 0.52s forwards, heartbeat 2s ease-in-out 1.2s infinite;
+  -webkit-animation: rise 0.75s ease-out 0.52s forwards, heartbeat 2.2s linear 1.2s infinite;
+  animation: rise 0.75s ease-out 0.52s forwards, heartbeat 2.2s linear 1.2s infinite;
 }
 
 /* 日期 */
