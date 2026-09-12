@@ -335,7 +335,7 @@ body {
   gap: 0.75em;
   font-family: 'KingHwa OldSong', 'ZCOOL Xiao Wei', 'Songti SC', serif;
   font-weight: 400;
-  font-size: clamp(1.5rem, 5.6vw, 2.4rem);
+  font-size: clamp(1.35rem, 5vw, 2.1rem);
   color: #7B1818;
   letter-spacing: 0.28em;
   text-indent: 0.28em;
