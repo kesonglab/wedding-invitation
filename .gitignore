@@ -1,3 +1,5 @@
 .DS_Store
 .opencode/
 .venv/
+.pii-replacements.txt
+privacy-github-submissions.txt
