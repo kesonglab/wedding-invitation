@@ -6,6 +6,8 @@
 
 在线预览：[https://kesonglab.github.io/wedding-invitation/](https://kesonglab.github.io/wedding-invitation/)
 
+**详细配置与用法（傻瓜式）：** [Wiki · 配置与用法](https://github.com/kesonglab/wedding-invitation/wiki/配置与用法)
+
 页面上的姓名、日期与地址只是**诗意虚构的示例**，方便你当成模板改成自己的故事。
 
 ## 它是什么模样
